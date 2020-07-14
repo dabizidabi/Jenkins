@@ -1,2 +1,8 @@
 Install Jenkins see official documentation:
 1. yum install java-1.8.0-openjdk
+
+http://192.168.1.104:8080/restart #restart jenkins server
+
+greenbals #plugin to change color for jobs indicator
+
+/var/lib/jenkins/jobs #directory with created jobs

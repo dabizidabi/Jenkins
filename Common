@@ -4,5 +4,8 @@ Install Jenkins see official documentation:
 http://192.168.1.104:8080/restart #restart jenkins server
 
 greenbals #plugin to change color for jobs indicator
+publish over ssh #plugin for scp to servers
+ssh-keygen -t rsa -b 4096 -m PEM #add to jenkins private key for connection
 
 /var/lib/jenkins/jobs #directory with created jobs
+

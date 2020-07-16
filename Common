@@ -22,3 +22,5 @@ export JENKINS_USER_ID=username
 export JENKINS_API_TOKEN=userstoken
 #then coomand must be:
 java -jar jenkins-cli.jar -s http://localhost:8080 who-am-i
+
+DEPLOY from Git:

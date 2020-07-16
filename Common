@@ -9,3 +9,16 @@ ssh-keygen -t rsa -b 4096 -m PEM #add to jenkins private key for connection
 
 /var/lib/jenkins/jobs #directory with created jobs
 
+ADD SLAVE/NODE:
+Need plagins:
+ssh slaves
+ssh agent
+
+Jenkins remote client:
+http://192.168.1.100:8080/jnlpJars/jenkins-cli.jar
+java -jar jenkins-cli.jar -auth username:password -s http://localhost:8080 who-am-i
+#shortly command:
+export JENKINS_USER_ID=username
+export JENKINS_API_TOKEN=userstoken
+#then coomand must be:
+java -jar jenkins-cli.jar -s http://localhost:8080 who-am-i

@@ -1,0 +1,11 @@
+Add jenkins user for ssh:
+vi /etc/passwd and change /bin/false to /bin/bash
+sudo -i
+su - jenkins #switch to jenkins user
+ssh-keygen #create shh-keys
+cat .ssh/id_rsa.pub #copy key to another slave
+connect to enother server and add copy key:
+ssh user@192.168.1.5
+sudo -i
+vim .ssh/autorized_keys #and paste key
+

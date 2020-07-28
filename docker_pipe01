@@ -1,0 +1,21 @@
+#!groovy
+// Check ubuntu properties
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent {
+        label 'master'
+        }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+    }
+    stages {
+        stage("Build docker image") {
+            steps {
+                dir ('docker') {
+                sh 'docker build -t test:v1 .'
+                }
+            }
+        }
+    }
+}

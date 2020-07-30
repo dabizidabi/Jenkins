@@ -26,5 +26,10 @@ pipeline {
                 }
             }
         }
+        stage("Docker push") {
+            steps {
+                sh 'docker push dabizidabi/app:v1 .'
+            }
+        }
     }
 }

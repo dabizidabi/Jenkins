@@ -19,8 +19,6 @@ pipeline {
                 }
             }
         }
-    }
-    stages {
         stage("Build docker image") {
             steps {
                 dir ('docker') {

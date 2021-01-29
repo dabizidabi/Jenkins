@@ -14,7 +14,8 @@ RUN chown remote_user. -R /home/remote_user/.ssh && \
 
 RUN /usr/sbin/sshd-keygen
 
-RUN yum -y install mysql
+RUN yum -y install mysql && \
+    yum -y install python3
 
 RUN curl -O https://bootstrap.pypa.io/get-pip.py %% \
     python3 get-pip.py && \

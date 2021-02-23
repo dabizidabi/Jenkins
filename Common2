@@ -9,3 +9,18 @@ ssh user@192.168.1.5
 sudo -i
 vim .ssh/autorized_keys #and paste key
 
+
+Get & Use Crumb
+curl -u "admin:admin" -s 'http://localhost:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)'
+
+crumb=$(curl -u "admin:admin" -s 'http://localhost:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+curl -u "admin:admin" -H "$crumb" -X POST http://localhost:8080/job/env/build?delay=0sec
+
+Githooks throwing 403 forbidden errors:
+Resolution:
+* Install a plugin named Strict Crumb Issue
+* Go to Manage Jenkins -> Configure Global Security -> CSRF Protection.
+* Select Strict Crumb Issuer.
+* Click on Advanced.
+* Uncheck the Check the session ID box.
+* Save it.

@@ -1,0 +1,29 @@
+job('test_job_dsl') {
+        description('This is job created by jenkins dsl')
+        parameters {
+                stringParam('Car', defaulValue = 'BMV', description = 'This is the car')
+                booleanParam('FLAG', true)
+                choiceParam('OPTION', ['option 1 (default)', 'option 2', 'option 3'])
+        }
+
+        scm {
+                git('https://github.com/jenkins-docs/simple-java-maven-app', 'master')
+        }
+
+        triggers {
+                cron('H 5 * * 7')
+        }
+
+        steps {
+                shell("""
+                        echo 'Hello World'
+                        echo 'Running script'
+                        /tmp/script.sh
+                """)
+                shell("echo 'Hello World2'")
+        }
+
+        publishers {
+                mailer('test@test.com', true, true)
+        }
+}

@@ -1,0 +1,23 @@
+job('backup_database') {
+
+	description('This is test backup database job')
+
+	parametrs {
+		stringParam('DB_HOST', defaultValue = 'db_host')
+		stringParam('DATABASE_NAME', defaultValue = 'testdb')
+		stringParam('AWS_bucket', defaultValue = 'dabizidabi-mysql-backup')
+	}
+	
+	wrappers {
+		credentialsBinding {
+			string('Mysq_pass', 'MYSQL_PASSWORD')
+			string('AWS_secret', 'Secret')
+		}
+	}
+	
+	steps {
+		remoteShell('user@remote:22') { 
+			command('/tmp/script.sh $DB_HOST $Mysq_pass $DATABASE_NAME $AWS_secret $AWS_bucket')	
+		}
+	}
+}
